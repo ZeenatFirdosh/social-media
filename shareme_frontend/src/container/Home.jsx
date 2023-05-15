@@ -25,7 +25,19 @@ const Home = () => {
     client.fetch(query).then((data) => {
       {console.log("this is data:")};
       {console.log(data)};
-      setUser(data[0]);
+      {console.log(data[0])};
+      {console.log(data[0].userName)};
+      setUser(user => ({
+        ...user,
+        ...data[0]
+      }));                     //************************ Attentiion ******************** */
+      {console.log("this is user in useeffect finnally getting user next in usestate :")};
+      
+      setTimeout(() => {
+        {console.log(user)};
+        {console.log(`user-profile/${user?._id}`)};
+
+      }, 3000);
     });
   }, []);
 

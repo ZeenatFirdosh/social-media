@@ -57,7 +57,7 @@ const Login = () => {
           </div>
 
           <div className="shadow-2xl">
-          <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}>
+          
             <GoogleLogin
               clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
               render={(renderProps) => (
@@ -74,7 +74,7 @@ const Login = () => {
               onFailure={responseGoogle}
               cookiePolicy="single_host_origin"
             />
-            </GoogleOAuthProvider>
+            
           </div>
         </div>
       </div>

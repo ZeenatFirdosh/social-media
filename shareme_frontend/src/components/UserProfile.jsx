@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineLogout } from 'react-icons/ai';
 import { useParams, useNavigate } from 'react-router-dom';
 import { googleLogout } from '@react-oauth/google';
-// import { googleLogout } from '@react-oauth/google';
 
 import { userCreatedPinsQuery, userQuery, userSavedPinsQuery } from '../utils/data';
 import { client } from '../client';
@@ -45,9 +44,11 @@ const UserProfile = () => {
     }
   }, [text, userId]);
 
+// {console.log(`userId === User.sub:${userId === User.sub}`)};
+
   const logout = () => {
     localStorage.clear();
-
+    googleLogout();
     navigate('/login');
   };
 
@@ -73,7 +74,8 @@ const UserProfile = () => {
             {user.userName}
           </h1>
           <div className="absolute top-0 z-1 right-0 p-2">
-            {userId === User.sub && (
+            {/* {userId === User.sub && (
+              
               <googleLogout
                 clientId={`${process.env.REACT_APP_GOOGLE_API_TOKEN}`}
                 render={(renderProps) => (
@@ -83,13 +85,16 @@ const UserProfile = () => {
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                   >
-                    <AiOutlineLogout color="red" fontSize={21} />
+                    
                   </button>
                 )}
                 onLogoutSuccess={logout}
                 cookiePolicy="single_host_origin"
               />
-            )}
+              
+            )} */}
+            
+            <AiOutlineLogout color="red" fontSize={40} onClick={logout} className=" bg-white p-2 rounded-full cursor-pointer outline-none shadow-md" />
           </div>
         </div>
         <div className="text-center mb-7">
