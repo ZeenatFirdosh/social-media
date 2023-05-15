@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState} from 'react';
 // import GoogleLogin from 'react-google-login';
 import { GoogleLogin } from '@react-oauth/google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
@@ -12,6 +12,7 @@ import { client } from '../client';
 
 const Login = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState();
 //   useEffect(() => {
 //     // global google
 //     google.accounts.id.initialize   
@@ -30,6 +31,8 @@ const Login = () => {
       userName: name,
       image: picture,
     };
+    setUser(JSON.stringify(response.profileObj));
+    {console.log(JSON.stringify(response.profileObj))};
     client.createIfNotExists(doc).then(() => {
       navigate('/', { replace: true });
     });
